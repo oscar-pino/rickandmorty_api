@@ -1,5 +1,6 @@
 package com.oscarpino.rickandmorty.characters.ui.viewmodel
 
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -30,10 +31,10 @@ class CharactersViewModel : ViewModel() {
             val response = getAllCharactersUseCase.execute()
 
             when(response.result){
-                ResultResponse.SUCCESSFUL -> {}
-                else->{
-
+                ResultResponse.SUCCESSFUL -> {
+                    characters.postValue(response.payload ?:emptyList<Characters>())
                 }
+                else->{}
             }
         }
     }
